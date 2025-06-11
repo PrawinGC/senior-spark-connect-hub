@@ -67,62 +67,64 @@ const Dashboard = ({ user, setUser, visionLevel, setVisionLevel }: DashboardProp
   });
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar user={user} setUser={setUser} />
-      <main className="container mx-auto px-4 py-6">
-        <Routes>
-          <Route path="/" element={
-            <HomePage 
-              user={user} 
-              clubs={clubs.filter(club => club.featured)} 
-              events={events.filter(event => event.featured)} 
-            />
-          } />
-          <Route path="/clubs" element={
-            <ClubsPage 
-              clubs={clubs} 
-              setClubs={setClubs} 
-              user={user}
-              userMemberships={userMemberships}
-              setUserMemberships={setUserMemberships}
-            />
-          } />
-          <Route path="/events" element={
-            <EventsPage 
-              events={events} 
-              setEvents={setEvents} 
-              user={user}
-              userMemberships={userMemberships}
-              setUserMemberships={setUserMemberships}
-            />
-          } />
-          <Route path="/profile" element={
-            <ProfilePage 
-              user={user} 
-              userMemberships={userMemberships}
-              visionLevel={visionLevel}
-              setVisionLevel={setVisionLevel}
-            />
-          } />
-          <Route path="/club/:id" element={
-            <ClubDetail 
-              clubs={clubs} 
-              user={user}
-              userMemberships={userMemberships}
-              setUserMemberships={setUserMemberships}
-            />
-          } />
-          <Route path="/event/:id" element={
-            <EventDetail 
-              events={events} 
-              user={user}
-              userMemberships={userMemberships}
-              setUserMemberships={setUserMemberships}
-            />
-          } />
-        </Routes>
-      </main>
-    </div>
+    <Router>
+      <div className="min-h-screen bg-background">
+        <Navbar user={user} setUser={setUser} />
+        <main className="container mx-auto px-4 py-6">
+          <Routes>
+            <Route path="/" element={
+              <HomePage 
+                user={user} 
+                clubs={clubs.filter(club => club.featured)} 
+                events={events.filter(event => event.featured)} 
+              />
+            } />
+            <Route path="/clubs" element={
+              <ClubsPage 
+                clubs={clubs} 
+                setClubs={setClubs} 
+                user={user}
+                userMemberships={userMemberships}
+                setUserMemberships={setUserMemberships}
+              />
+            } />
+            <Route path="/events" element={
+              <EventsPage 
+                events={events} 
+                setEvents={setEvents} 
+                user={user}
+                userMemberships={userMemberships}
+                setUserMemberships={setUserMemberships}
+              />
+            } />
+            <Route path="/profile" element={
+              <ProfilePage 
+                user={user} 
+                userMemberships={userMemberships}
+                visionLevel={visionLevel}
+                setVisionLevel={setVisionLevel}
+              />
+            } />
+            <Route path="/club/:id" element={
+              <ClubDetail 
+                clubs={clubs} 
+                user={user}
+                userMemberships={userMemberships}
+                setUserMemberships={setUserMemberships}
+              />
+            } />
+            <Route path="/event/:id" element={
+              <EventDetail 
+                events={events} 
+                user={user}
+                userMemberships={userMemberships}
+                setUserMemberships={setUserMemberships}
+              />
+            } />
+          </Routes>
+        </main>
+      </div>
+    </Router>
   );
 };
 
